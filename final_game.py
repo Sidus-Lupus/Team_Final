@@ -1,15 +1,16 @@
 #CW AP final game project
 import random
 
+board_setup = [" ", " ", " ", " ", " ", " ",]
 location1 = "X"
-location2 = "O"
-location3 = "X"
-location4 = "O"
-location5 = "X"
-location6 = "O"
-location7 = "X"
-location8 = "O"
-location9 = "X"
+location2 = " "
+location3 = " "
+location4 = " "
+location5 = " "
+location6 = " "
+location7 = " "
+location8 = " "
+location9 = " "
 
 def checkLegalMove(location):
     if location == "X" or location == "O":
@@ -18,7 +19,7 @@ def checkLegalMove(location):
         return True
     
 def runComputerMove():
-    random(1,9)
+    findBoardLocation(random.randint(1,9)) = "O"
 
 def printGameBoard(loc1, loc2, loc3, loc4, loc5, loc6, loc7, loc8, loc9 ):
     print(f"{loc1} | {loc2} | {loc3}")
@@ -46,6 +47,9 @@ def findBoardLocation(location):
         return location8
     else:
         return location9
+
+
+runComputerMove()
 
 printGameBoard(location1, location2, location3, location4, location5, location6, location7, location8, location9)
 """def playerMove(move):
