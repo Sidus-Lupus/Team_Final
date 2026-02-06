@@ -1,9 +1,9 @@
 #CW AP final game project
 import random
 
-location1 = " "
-location2 = " "
-location3 = " "
+location1 = "X"
+location2 = "O"
+location3 = "X"
 location4 = "O"
 location5 = "X"
 location6 = "O"
@@ -48,7 +48,7 @@ def findBoardLocation(location):
         return location9
 
 printGameBoard(location1, location2, location3, location4, location5, location6, location7, location8, location9)
-def playerMove(move):
+"""def playerMove(move):
     int(input(f"where would you like to play (1-9 left-right then top-down)?: "))
     if
-    location == "X"
+    location == "X"""
