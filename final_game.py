@@ -52,7 +52,7 @@ def findBoardLocation(location):
 runComputerMove()
 
 printGameBoard(location1, location2, location3, location4, location5, location6, location7, location8, location9)
-"""def playerMove(move):
-    int(input(f"where would you like to play (1-9 left-right then top-down)?: "))
-    if
-    location == "X"""
+def playerMove(move):
+    move = int(input(f"where would you like to play (1-9 left-right then top-down)?: "))
+    if move == 1:
+        print("X")
