@@ -1,4 +1,5 @@
 #CW AP final game project
+import random
 
 location1 = " "
 location2 = " "
@@ -15,6 +16,9 @@ def checkLegalMove(location):
         return False
     else:
         return True
+    
+def runComputerMove():
+    random(1,9)
 
 def printGameBoard(loc1, loc2, loc3, loc4, loc5, loc6, loc7, loc8, loc9 ):
     print(f"{loc1} | {loc2} | {loc3}")
