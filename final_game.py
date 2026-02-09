@@ -1,7 +1,7 @@
 #CW AP final game project
 import random
 
-board_setup = [" ", " ", " ", " ", " ", " ",]
+board_setup = ["X", " ", "O", " ", "X", " ", " ", " ", " "]
 location1 = "X"
 location2 = " "
 location3 = " "
@@ -17,18 +17,20 @@ def checkLegalMove(location):
         return False
     else:
         return True
-    
-def runComputerMove():
-    findBoardLocation(random.randint(1,9)) = "O"
+
+def playerMove(move):
+    move = int(input(f"where would you like to play (1-9 left-right then top-down)?: "))
+    if move == 1:
+        print("X")
 
 def printGameBoard(loc1, loc2, loc3, loc4, loc5, loc6, loc7, loc8, loc9 ):
-    print(f"{loc1} | {loc2} | {loc3}")
-    print("--|---|--")
-    print(f"{loc4} | {loc5} | {loc6}")
-    print("--|---|--")
-    print(f"{loc7} | {loc8} | {loc9}")
+    print(f" {loc1} | {loc2} | {loc3}")
+    print("---|---|---")
+    print(f" {loc4} | {loc5} | {loc6}")
+    print("---|---|---")
+    print(f" {loc7} | {loc8} | {loc9}")
 
-def findBoardLocation(location):
+"""def findBoardLocation(location):
     if location == 1:
         return location1
     elif location == 2:
@@ -46,13 +48,7 @@ def findBoardLocation(location):
     elif location == 8:
         return location8
     else:
-        return location9
+        return location9"""
 
 
-runComputerMove()
 
-printGameBoard(location1, location2, location3, location4, location5, location6, location7, location8, location9)
-def playerMove(move):
-    move = int(input(f"where would you like to play (1-9 left-right then top-down)?: "))
-    if move == 1:
-        print("X")
