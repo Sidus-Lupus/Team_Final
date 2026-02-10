@@ -1,28 +1,29 @@
 #CW AP final game project
 import random
 
-board_setup = ["X", " ", "O", " ", "X", " ", " ", " ", " "]
-location1 = "X"
-location2 = " "
-location3 = " "
-location4 = " "
-location5 = " "
-location6 = " "
-location7 = " "
-location8 = " "
-location9 = " "
+board_setup = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+
 
 def checkLegalMove(location):
-    if location == "X" or location == "O":
+    if board_setup[location-1] == " ":
+        return True
+    else:
+        return False
+
+def playerMove(move):
+    if checkLegalMove(move):
+        board_setup[move-1] = "X"
         return False
     else:
         return True
 
-def playerMove(move):
-    move = int(input(f"where would you like to play (1-9 left-right then top-down)?: "))
-    if move == 1:
-        print("X")
-
+def computerMove(move):
+    if checkLegalMove(move):
+        board_setup[move-1] = "O"
+        return False
+    else:
+        return True
+    
 def printGameBoard(loc1, loc2, loc3, loc4, loc5, loc6, loc7, loc8, loc9 ):
     print(f" {loc1} | {loc2} | {loc3}")
     print("---|---|---")
@@ -30,25 +31,43 @@ def printGameBoard(loc1, loc2, loc3, loc4, loc5, loc6, loc7, loc8, loc9 ):
     print("---|---|---")
     print(f" {loc7} | {loc8} | {loc9}")
 
-"""def findBoardLocation(location):
-    if location == 1:
-        return location1
-    elif location == 2:
-        return location2
-    elif location == 3:
-        return location3
-    elif location == 4:
-        return location4
-    elif location == 5:
-        return location5
-    elif location == 6:
-        return location6
-    elif location == 7:
-        return location7
-    elif location == 8:
-        return location8
+def printWinner(location):
+    if location == "X":
+        print("Player Wins!")
+    elif location == "O":
+        print("Computer Wins!")
     else:
-        return location9"""
+        print("Cat's Game...")
 
-
-
+def checkWinner(loc1, loc2, loc3, loc4, loc5, loc6, loc7, loc8, loc9):
+    if loc1 == loc2 == loc3 and loc1 != " ":
+        printWinner(loc1)
+        return False
+    elif loc1 == loc5 == loc9 and loc1 != " ":
+        printWinner(loc1)
+        return False
+    elif loc1 == loc4 == loc7 and loc1 != " ":
+        printWinner(loc1)
+        return False
+    elif loc2 == loc5 == loc8 and loc2 != " ":
+        printWinner(loc2)
+        return False
+    elif loc3 == loc6 == loc9 and loc3 != " ":
+        printWinner(loc3)
+        return False
+    elif loc3 == loc5 == loc7 and loc3 != " ":
+        printWinner(loc3)
+        return False
+    elif loc1 != " " and loc2 != " " and loc3 != " " and loc4 != " " and loc5 != " " and loc6 != " " and loc7 != " " and loc8 != " " and loc9 != " ":
+        print("Cat's Game...")
+        return False
+    else:
+        return True
+       
+while checkWinner(board_setup[0], board_setup[1], board_setup[2], board_setup[3], board_setup[4], board_setup[5], board_setup[6], board_setup[7], board_setup[8]):
+    printGameBoard(board_setup[0], board_setup[1], board_setup[2], board_setup[3], board_setup[4], board_setup[5], board_setup[6], board_setup[7], board_setup[8])
+    while playerMove(int(input("Where would you like to play (1-9 left-right then top-down)?: "))):
+        pass
+    while computerMove(random.randint(1,9)):
+        pass
+printGameBoard(board_setup[0], board_setup[1], board_setup[2], board_setup[3], board_setup[4], board_setup[5], board_setup[6], board_setup[7], board_setup[8])
