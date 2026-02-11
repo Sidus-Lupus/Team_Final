@@ -34,10 +34,8 @@ def printGameBoard(loc1, loc2, loc3, loc4, loc5, loc6, loc7, loc8, loc9 ):
 def printWinner(location):
     if location == "X":
         print("Player Wins!")
-    elif location == "O":
-        print("Computer Wins!")
     else:
-        print("Cat's Game...")
+        print("Computer Wins!")
 
 def checkWinner(loc1, loc2, loc3, loc4, loc5, loc6, loc7, loc8, loc9):
     if loc1 == loc2 == loc3 and loc1 != " ":
@@ -58,16 +56,40 @@ def checkWinner(loc1, loc2, loc3, loc4, loc5, loc6, loc7, loc8, loc9):
     elif loc3 == loc5 == loc7 and loc3 != " ":
         printWinner(loc3)
         return False
+    elif loc4 == loc5 == loc6 and loc4 != " ":
+        printWinner(loc4)
+        return False
+    elif loc7 == loc8 == loc9 and loc7 != " ":
+        printWinner(loc7)
+        return False
     elif loc1 != " " and loc2 != " " and loc3 != " " and loc4 != " " and loc5 != " " and loc6 != " " and loc7 != " " and loc8 != " " and loc9 != " ":
         print("Cat's Game...")
         return False
     else:
         return True
-       
-while checkWinner(board_setup[0], board_setup[1], board_setup[2], board_setup[3], board_setup[4], board_setup[5], board_setup[6], board_setup[7], board_setup[8]):
+
+def resetBoard():
+    player_play_again = input("Would you like to play again (y/n): ").strip().lower()
+    if  player_play_again == "y":
+        return True
+    else:
+        print("Thanks for playing :3")
+        return False
+
+def runGame():
+    while checkWinner(board_setup[0], board_setup[1], board_setup[2], board_setup[3], board_setup[4], board_setup[5], board_setup[6], board_setup[7], board_setup[8]):
+        printGameBoard(board_setup[0], board_setup[1], board_setup[2], board_setup[3], board_setup[4], board_setup[5], board_setup[6], board_setup[7], board_setup[8])
+        while playerMove(int(input("Where would you like to play (1-9 left-right then top-down)?: "))):
+            pass
+        if False == checkWinner(board_setup[0], board_setup[1], board_setup[2], board_setup[3], board_setup[4], board_setup[5], board_setup[6], board_setup[7], board_setup[8]):
+                break
+        while computerMove(random.randint(1,9)):
+            pass
     printGameBoard(board_setup[0], board_setup[1], board_setup[2], board_setup[3], board_setup[4], board_setup[5], board_setup[6], board_setup[7], board_setup[8])
-    while playerMove(int(input("Where would you like to play (1-9 left-right then top-down)?: "))):
-        pass
-    while computerMove(random.randint(1,9)):
-        pass
-printGameBoard(board_setup[0], board_setup[1], board_setup[2], board_setup[3], board_setup[4], board_setup[5], board_setup[6], board_setup[7], board_setup[8])
+
+
+while True:
+    runGame()
+    board_setup = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+    if not resetBoard():
+        break
